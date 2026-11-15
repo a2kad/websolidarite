@@ -48,7 +48,7 @@ export default function ContactPage() {
                   <div className="flex gap-3">
                     <MapPin className="w-5 h-5 text-green shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold mb-1">Boutique / Atelier</p>
+                      <p className="font-semibold mb-1">Boutique / Atelier / RDV</p>
                       <p className="text-white/75 leading-relaxed">
                         48 – 50 Rue Albert Samain
                         <br />
@@ -79,9 +79,9 @@ export default function ContactPage() {
                     <div>
                       <p className="font-semibold mb-1">Horaires boutique</p>
                       <p className="text-white/75 leading-relaxed">
-                        Mar – Ven : 14h – 18h
+                        Mar – Ven : 13h00 – 18h30
                         <br />
-                        Samedi : 10h – 12h30 / 14h – 18h
+                        Samedi : 14h00 – 18h30
                         <br />
                         <span className="text-white/55">Lun & Dim : fermé</span>
                       </p>

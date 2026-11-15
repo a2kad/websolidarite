@@ -1,277 +1,256 @@
 import Link from "next/link";
-import {
-  Users,
-  Laptop,
-  Shield,
-  GraduationCap,
-  MapPin,
-  Clock,
-  Phone,
-  CheckCircle2,
-} from "lucide-react";
+import Image from "next/image";
 
 export const metadata = {
   title: "Nos Ateliers Numériques – Web Solidarité",
   description:
-    "Ateliers informatiques et internet au Havre. Accompagnement vers l'autonomie numérique pour tous les publics, contre la fracture numérique.",
+    "Ateliers numériques au Havre et Montivilliers. Mini-formations de 2 à 8 séances pour tous les niveaux. Partenariat CPAM / Ameli.",
 };
 
-const publics = [
-  "Seniors souhaitant gagner en autonomie",
-  "Jeunes en recherche d'insertion",
-  "Personnes en situation de précarité",
-  "Habitants des quartiers QPV & ZRR",
-  "Demandeurs d'emploi",
-  "Toute personne motivée pour apprendre",
-];
-
-const themes = [
-  {
-    icon: Laptop,
-    title: "Prise en main de l'ordinateur",
-    text: "Allumer, naviguer, fichiers, clavier, souris, et premiers réflexes utiles au quotidien.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Internet & démarches en ligne",
-    text: "Mails, recherches, comptes en ligne, services publics, CAF, Ameli, Impôts…",
-  },
-  {
-    icon: Shield,
-    title: "Sécurité et bons réflexes",
-    text: "Reconnaître les arnaques, protéger ses données, mots de passe, phishing et bonnes pratiques.",
-  },
-  {
-    icon: Users,
-    title: "Accompagnement personnalisé",
-    text: "Petits groupes et suivi adapté au rythme de chacun, dans une ambiance bienveillante.",
-  },
-];
-
-const steps = [
-  "Prise de contact (formulaire, téléphone ou passage à la boutique)",
-  "Échange sur vos besoins et votre niveau",
-  "Proposition d'atelier ou d'accompagnement",
-  "Participation et progression à votre rythme",
+const topics = [
+  "Manipulation du clavier et de la souris",
+  "Navigation sur la messagerie",
+  "Internet et recherches en ligne",
+  "Réseaux sociaux",
+  "Création de diaporamas",
+  "Montages photos",
 ];
 
 export default function AteliersNumeriquesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy text-white py-16 md:py-24">
+      <section className="bg-green text-white py-14 md:py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold uppercase tracking-wide mb-4">
+          <h1 className="text-2xl md:text-4xl font-bold uppercase tracking-wide">
             Nos Ateliers Numériques
           </h1>
-          <div className="w-16 h-1 bg-yellow-400 mx-auto mb-6 rounded-full" />
-          <p className="text-white/80 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-            Apprendre, comprendre et utiliser les outils numériques en toute
-            autonomie — au Havre et alentours.
+          <p className="mt-2 text-white/90 text-sm md:text-base uppercase tracking-wide">
+            Association Web Solidarité
           </p>
         </div>
       </section>
 
       {/* Intro */}
       <section className="py-14 md:py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-3xl text-center">
-          <p className="text-slate-600 leading-relaxed text-[15px] mb-5">
-            L&apos;Association Web Solidarité organise des ateliers
-            informatiques et internet pour toutes les personnes ayant la
-            volonté d&apos;apprendre. Notre objectif : accompagner chacun vers
-            une plus grande autonomie numérique.
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+            Développer les compétences numériques avec nous&nbsp;!
+          </h2>
+          <p className="text-slate-600 leading-relaxed mb-3">
+            Besoin d&apos;améliorer la maîtrise de votre ordinateur, tablette ou
+            smartphone&nbsp;? Vous êtes débutant, ou plutôt expérimenté&nbsp;?
           </p>
-          <p className="text-slate-600 leading-relaxed text-[15px]">
-            Ces ateliers s&apos;inscrivent dans notre mission de lutte contre la
-            fracture numérique, en lien avec le territoire de la Communauté
-            Urbaine Le Havre Seine-Métropole et nos actions de
-            reconditionnement.
+          <p className="text-slate-600 leading-relaxed">
+            Découvrez nos mini-formations de{" "}
+            <strong>2 à 8 séances</strong> conçues pour vous.
           </p>
         </div>
       </section>
 
-      {/* Publics */}
-      <section className="py-16 md:py-20 bg-slate-50">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center uppercase tracking-wide mb-3">
-            À qui s&apos;adressent les ateliers ?
-          </h2>
-          <div className="w-14 h-1 bg-green mx-auto mb-10 rounded-full" />
-
-          <div className="grid sm:grid-cols-2 gap-3">
-            {publics.map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-3"
-              >
-                <CheckCircle2 className="w-5 h-5 text-green shrink-0" />
-                <span className="text-sm text-slate-700">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Thèmes */}
-      <section className="py-16 md:py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center uppercase tracking-wide mb-3">
-            Ce que nous abordons
-          </h2>
-          <div className="w-14 h-1 bg-yellow-400 mx-auto mb-12 rounded-full" />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {themes.map((theme) => (
-              <div
-                key={theme.title}
-                className="bg-card border border-border rounded-2xl p-6 text-center hover:shadow-md transition-shadow"
-              >
-                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-green-soft flex items-center justify-center">
-                  <theme.icon className="w-6 h-6 text-green" />
-                </div>
-                <h3 className="font-bold text-navy uppercase tracking-wide text-sm mb-2">
-                  {theme.title}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  {theme.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Comment ça se passe */}
-      <section className="py-16 md:py-20 bg-slate-50">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center uppercase tracking-wide mb-3">
-            Comment participer ?
-          </h2>
-          <div className="w-14 h-1 bg-green mx-auto mb-10 rounded-full" />
-
-          <ol className="space-y-4">
-            {steps.map((step, i) => (
-              <li
-                key={step}
-                className="flex gap-4 bg-card border border-border rounded-2xl p-5"
-              >
-                <span className="w-9 h-9 rounded-full bg-green text-white text-sm font-bold flex items-center justify-center shrink-0">
-                  {i + 1}
-                </span>
-                <p className="text-sm text-slate-700 leading-relaxed pt-1.5">
-                  {step}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* Infos pratiques */}
-      <section className="py-16 md:py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-navy text-white rounded-2xl p-8">
-              <h2 className="text-xl font-bold uppercase tracking-wide mb-6">
-                Informations pratiques
-              </h2>
-
-              <div className="space-y-5 text-sm">
-                <div className="flex gap-3">
-                  <MapPin className="w-5 h-5 text-green shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold mb-1">Lieu</p>
-                    <p className="text-white/75 leading-relaxed">
-                      Boutique / Atelier Web Solidarité
-                      <br />
-                      48 – 50 Rue Albert Samain
-                      <br />
-                      76620 Le Havre
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <Clock className="w-5 h-5 text-green shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold mb-1">Horaires boutique</p>
-                    <p className="text-white/75 leading-relaxed">
-                      Mar – Ven : 14h – 18h
-                      <br />
-                      Samedi : 10h – 12h30 / 14h – 18h
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <Phone className="w-5 h-5 text-green shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold mb-1">Téléphone</p>
-                    <a
-                      href="tel:+33954149048"
-                      className="text-white/75 hover:text-white transition-colors"
-                    >
-                      09 54 14 90 48
-                    </a>
-                  </div>
-                </div>
-              </div>
+      {/* Présentation + image */}
+      <section className="py-12 md:py-16 bg-slate-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-border bg-white shadow-sm">
+              <Image
+                src="/images/atelier-numerique-pour-tous.png"
+                alt="Atelier numérique pour tous"
+                fill
+                className="object-contain p-4"
+                priority
+              />
             </div>
 
-            <div className="bg-card border border-border rounded-2xl p-8 flex flex-col justify-center">
-              <h2 className="text-xl font-bold text-navy uppercase tracking-wide mb-4">
-                Matériel reconditionné
-              </h2>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Les ateliers s&apos;appuient sur du matériel informatique
-                reconditionné par l&apos;association. Ainsi, chaque don reçu
-                peut servir directement à la formation et à l&apos;autonomie
-                numérique des participants.
+            <div className="space-y-4 text-slate-600 text-[15px] leading-relaxed">
+              <p>
+                Nos ateliers informatiques sont organisés pour toute personne
+                désireuse d&apos;apprendre. Nous proposons des ateliers
+                d&apos;apprentissage et de perfectionnement informatique dans
+                différents quartiers au <strong>Havre</strong> et à{" "}
+                <strong>Montivilliers</strong>.
               </p>
-              <Link
-                href="/faire-un-don"
-                className="inline-flex items-center justify-center px-5 py-2.5
-                           bg-green hover:bg-green-hover text-white
-                           text-sm font-semibold uppercase tracking-wide
-                           rounded-lg transition-colors self-start"
-              >
-                Faire un don de matériel
-              </Link>
+              <ul className="space-y-2">
+                {topics.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-green shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-14 bg-navy text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-xl md:text-2xl font-bold uppercase tracking-wide mb-4">
-            Envie de participer ou de devenir bénévole ?
-          </h2>
-          <p className="text-white/75 max-w-xl mx-auto mb-8 text-sm md:text-base">
-            Contactez-nous pour connaître les prochaines sessions ou proposer
-            votre aide en tant que formateur / accompagnateur.
+      {/* Objectif */}
+      <section className="py-14 bg-background">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <p className="text-slate-600 leading-relaxed text-[15px]">
+            Quel que soit votre niveau de connaissance numérique, vous trouverez
+            une réponse adaptée à vos besoins dans nos ateliers numériques.
+            L&apos;objectif est de permettre aux{" "}
+            <strong>familles</strong>, aux <strong>seniors</strong> et aux{" "}
+            <strong>étudiants</strong> de réaliser des démarches
+            administratives en ligne et de les guider vers une certaine
+            autonomie.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <p className="text-slate-500 text-sm mt-4">
+            Nos conseillers vous guident en fonction de vos besoins.
+          </p>
+        </div>
+      </section>
+
+      {/* Aide technique */}
+      <section className="py-12 bg-slate-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-border bg-white">
+              <Image
+                src="/images/atelier-accompagnement.jpg"
+                alt="Accompagnement numérique personnalisé"
+                fill
+                className="object-contain p-4"
+              />
+            </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-border bg-white">
+              <Image
+                src="/images/atelier-depannage.jpg"
+                alt="Aide en cas de problème technique"
+                fill
+                className="object-contain p-4"
+              />
+            </div>
+          </div>
+          <p className="text-center text-sm text-slate-600 mt-6">
+            Un problème technique avec votre périphérique&nbsp;? Nous avons
+            sûrement la solution dans{" "}
+            <Link
+              href="/boutique"
+              className="text-green font-semibold hover:underline"
+            >
+              nos ateliers
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* CPAM / Ameli */}
+      <section className="py-14 md:py-16 bg-navy text-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-xl md:text-2xl font-bold uppercase tracking-wide mb-4">
+                Caisse Primaire d&apos;Assurance Maladie
+              </h2>
+              <div className="space-y-4 text-white/85 text-[15px] leading-relaxed">
+                <p>
+                  Depuis des années, l&apos;évolution numérique de
+                  l&apos;administration et des services publics s&apos;est
+                  poursuivie, jusqu&apos;à une dématérialisation des démarches.
+                </p>
+                <p>
+                  Depuis <strong>2021</strong>, en partenariat avec la{" "}
+                  <strong>CPAM du Havre</strong>, nous vous accompagnons vers
+                  une prise en main autonome de votre espace personnel&nbsp;:
+                  création de votre espace <strong>AMELI</strong>, ainsi que de
+                  votre <strong>ESPACE SANTÉ</strong>, effectuer une demande de
+                  prestation, télécharger vos attestations… sur votre ordinateur
+                  ou smartphone — rien de plus simple&nbsp;!
+                </p>
+              </div>
+            </div>
+
+            <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden bg-white flex items-center justify-center p-6">
+              <Image
+                src="/images/logo-assurance-maladie.jpg"
+                alt="l'Assurance Maladie"
+                width={320}
+                height={120}
+                className="object-contain max-h-full w-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lieux + planning */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="flex flex-wrap gap-4 justify-center mb-10 text-sm font-semibold uppercase tracking-wide">
+            <a href="#lieux" className="text-navy border-b-2 border-green pb-1">
+              Nos lieux d&apos;interventions
+            </a>
+            <a
+              href="#planning"
+              className="text-slate-500 hover:text-navy transition-colors"
+            >
+              Le planning
+            </a>
+          </div>
+
+          <div id="lieux" className="max-w-4xl mx-auto">
+            <h2 className="text-xl font-bold text-navy uppercase tracking-wide mb-6 text-center">
+              Nos lieux d&apos;interventions
+            </h2>
+            <div className="rounded-2xl overflow-hidden border border-border shadow-sm min-h-[360px]">
+              <iframe
+                title="Lieux d'ateliers numériques - Le Havre"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41600!2d0.12!3d49.49!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e02f3c0c0c0c0c%3A0x0!2sLe%20Havre!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: 360 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full min-h-[360px]"
+              />
+            </div>
+            <p className="text-xs text-slate-500 mt-3 text-center">
+              Ateliers proposés dans différents quartiers du Havre et à
+              Montivilliers. Contactez-nous pour le lieu le plus proche.
+            </p>
+          </div>
+
+          <div id="planning" className="mt-14 max-w-3xl mx-auto text-center">
+            <h2 className="text-xl font-bold text-navy uppercase tracking-wide mb-3">
+              Le planning
+            </h2>
+            <div className="w-12 h-1 bg-yellow-400 mx-auto mb-6 rounded-full" />
+            <p className="text-slate-600 text-sm leading-relaxed mb-6">
+              Les sessions sont organisées régulièrement selon les besoins des
+              participants et les disponibilités de nos conseillers numériques.
+              Pour connaître les prochaines dates, contactez-nous.
+            </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-7 py-3.5
+              className="inline-flex items-center justify-center px-6 py-3
                          bg-green hover:bg-green-hover text-white
                          text-sm font-semibold uppercase tracking-wide
                          rounded-lg transition-colors"
             >
               Nous contacter
             </Link>
-            <Link
-              href="/association"
-              className="inline-flex items-center justify-center px-7 py-3.5
-                         bg-white/10 hover:bg-white/15 text-white
-                         text-sm font-semibold uppercase tracking-wide
-                         rounded-lg border border-white/25 transition-colors"
-            >
-              L&apos;Association
-            </Link>
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-12 bg-navy text-white">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-white/80 mb-6 max-w-xl mx-auto">
+            Une question sur les ateliers ou le partenariat CPAM&nbsp;?
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center px-7 py-3.5
+                       bg-green hover:bg-green-hover text-white
+                       text-sm font-semibold uppercase tracking-wide
+                       rounded-lg transition-colors"
+          >
+            Contactez-nous
+          </Link>
         </div>
       </section>
     </>

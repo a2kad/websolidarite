@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { MapEmbed } from "@/components/ui/MapEmbed";
 
 export const metadata = {
   title: "Nos Ateliers Numériques – Web Solidarité",
@@ -194,19 +195,12 @@ export default function AteliersNumeriquesPage() {
             <h2 className="text-xl font-bold text-navy uppercase tracking-wide mb-6 text-center">
               Nos lieux d&apos;interventions
             </h2>
-            <div className="rounded-2xl overflow-hidden border border-border shadow-sm min-h-[360px]">
-              <iframe
-                title="Lieux d'ateliers numériques - Le Havre"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41600!2d0.12!3d49.49!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e02f3c0c0c0c0c%3A0x0!2sLe%20Havre!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: 360 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full min-h-[360px]"
-              />
-            </div>
+			<div className="rounded-2xl overflow-hidden border border-border shadow-sm min-h-[360px]">
+			<MapEmbed
+				title="Lieux d'ateliers numériques - Le Havre"
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41600!2d0.12!3d49.49!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e02f3c0c0c0c0c%3A0x0!2sLe%20Havre!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+			/>
+			</div>
             <p className="text-xs text-slate-500 mt-3 text-center">
               Ateliers proposés dans différents quartiers du Havre et à
               Montivilliers. Contactez-nous pour le lieu le plus proche.

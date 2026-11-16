@@ -79,11 +79,11 @@ export default function ContactPage() {
                     <div>
                       <p className="font-semibold mb-1">Horaires boutique</p>
                       <p className="text-white/75 leading-relaxed">
-                        Mar – Ven : 13h00 – 18h30
+                        Mardi, Mercredi, Vendredi : 14h00 – 18h30
                         <br />
-                        Samedi : 14h00 – 18h30
+                        Samedi : 13h00 – 18h30
                         <br />
-                        <span className="text-white/55">Lun & Dim : fermé</span>
+                        <span className="text-white/55">Lundi, Jeudi & Dimanche : fermé</span>
                       </p>
                     </div>
                   </div>

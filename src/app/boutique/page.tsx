@@ -17,11 +17,11 @@ export const metadata = {
 
 const schedule = [
   { day: "Lundi", hours: "Fermée" },
-  { day: "Mardi", hours: "14h00 – 18h00" },
-  { day: "Mercredi", hours: "14h00 – 18h00" },
-  { day: "Jeudi", hours: "14h00 – 18h00" },
-  { day: "Vendredi", hours: "14h00 – 18h00" },
-  { day: "Samedi", hours: "10h00 – 12h30 / 14h00 – 18h00" },
+  { day: "Mardi", hours: "14h00 – 18h30" },
+  { day: "Mercredi", hours: "14h00 – 18h30" },
+  { day: "Jeudi", hours: "Fermée" },
+  { day: "Vendredi", hours: "14h00 – 18h30" },
+  { day: "Samedi", hours: "13h00 – 18h30" },
   { day: "Dimanche", hours: "Fermée" },
 ];
 

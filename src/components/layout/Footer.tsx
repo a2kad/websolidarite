@@ -90,7 +90,7 @@ export function Footer() {
               3. Поле name="EMAIL" обычно требуется Brevo
             */}
             <form
-              action="https://exemple.brevo.com/placeholder"
+              action="https://b2ada37f.sibforms.com/serve/MUIFAE_E2d9v0SbJmFAP-8Wk14bZpI7FrIJWHBm0i5u00kDZ_mivTQHyF2TDLeKkc3uVdfALyw8clYIMyf9uazGptCppEWLi7DnVOnwlkUUjZm9QQ8mYXHb_59MQt7gudyk8Ry-tusIKX7wtfrpAPsrjZVRzT1uOHbhHWtBklQBCzYga4J65OJNnkHQSI4rWXQ3EgH4eHzI3B0QmAw=="
               method="POST"
               className="flex w-full md:w-auto flex-col sm:flex-row gap-2"
             >

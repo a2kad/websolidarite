@@ -32,7 +32,7 @@ export async function sendContactMessage(
   }
 
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: `Web Solidarité <${process.env.CONTACT_FROM_EMAIL}>`,
       to: [process.env.CONTACT_TO_EMAIL as string],
       replyTo: email,
@@ -50,11 +50,20 @@ export async function sendContactMessage(
       `,
     });
 
+    if (error) {
+      console.error("Resend error:", error);
+      return {
+        ok: false,
+        message: "Une erreur est survenue. Veuillez réessayer plus tard.",
+      };
+    }
+
     return {
       ok: true,
       message: "Votre message a bien été envoyé. Nous vous répondrons rapidement.",
     };
-  } catch {
+  } catch (err) {
+    console.error("Unexpected error:", err);
     return {
       ok: false,
       message: "Une erreur est survenue. Veuillez réessayer plus tard.",

@@ -1,4 +1,8 @@
+"use client";
+
+import { Suspense, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -66,10 +70,37 @@ const socials = [
   },
 ];
 
+function NewsletterAlert() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const shownRef = useRef(false);
+
+  useEffect(() => {
+    if (searchParams.get("newsletter") === "ok" && !shownRef.current) {
+      shownRef.current = true;
+      window.alert("Merci ! Votre inscription à notre newsletter est confirmée.");
+
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("newsletter");
+      const cleanUrl = params.toString()
+        ? `${pathname}?${params.toString()}`
+        : pathname;
+      router.replace(cleanUrl, { scroll: false });
+    }
+  }, [searchParams, pathname, router]);
+
+  return null;
+}
+
 export function Footer() {
   return (
     <footer className="bg-navy text-white mt-auto">
-      {/* Newsletter — Brevo placeholder */}
+      <Suspense fallback={null}>
+        <NewsletterAlert />
+      </Suspense>
+
+      {/* Newsletter — Brevo */}
       <div className="border-b border-white/10">
         <div className="container mx-auto px-4 py-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
@@ -83,12 +114,6 @@ export function Footer() {
               </p>
             </div>
 
-            {/*
-              Brevo:
-              1. Contacts → Forms → создать форму
-              2. Вставить сюда action URL из Brevo
-              3. Поле name="EMAIL" обычно требуется Brevo
-            */}
             <form
               action="https://b2ada37f.sibforms.com/serve/MUIFAE_E2d9v0SbJmFAP-8Wk14bZpI7FrIJWHBm0i5u00kDZ_mivTQHyF2TDLeKkc3uVdfALyw8clYIMyf9uazGptCppEWLi7DnVOnwlkUUjZm9QQ8mYXHb_59MQt7gudyk8Ry-tusIKX7wtfrpAPsrjZVRzT1uOHbhHWtBklQBCzYga4J65OJNnkHQSI4rWXQ3EgH4eHzI3B0QmAw=="
               method="POST"
@@ -107,6 +132,16 @@ export function Footer() {
                            bg-white text-navy placeholder:text-slate-400
                            outline-none focus:ring-2 focus:ring-green"
               />
+              <input
+                type="text"
+                name="email_address_check"
+                defaultValue=""
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+              <input type="hidden" name="locale" value="fr" />
+
               <button
                 type="submit"
                 className="px-6 py-3 bg-green hover:bg-green-hover text-white
@@ -156,65 +191,65 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-4 uppercase tracking-wide">
               Liens utiles
             </h3>
-			<ul className="space-y-2 text-sm text-white/70">
-			<li>
-				<Link href="/association" className="hover:text-white transition-colors">
-				L&apos;Association
-				</Link>
-			</li>
-			<li>
-				<Link
-				href="/association/soutenez-nous"
-				className="hover:text-white transition-colors"
-				>
-				Soutenez-nous
-				</Link>
-			</li>
-			<li>
-				<Link
-				href="/association/nos-ateliers-numeriques"
-				className="hover:text-white transition-colors"
-				>
-				Nos Ateliers Numériques
-				</Link>
-			</li>
-			<li>
-				<Link
-				href="/association/projets-internationaux"
-				className="hover:text-white transition-colors"
-				>
-				Projets Internationaux
-				</Link>
-			</li>
-			<li>
-				<Link href="/faire-un-don" className="hover:text-white transition-colors">
-				Faire un don
-				</Link>
-			</li>
-			<li>
-				<Link href="/boutique" className="hover:text-white transition-colors">
-				Boutique Solidaire
-				</Link>
-			</li>
-			<li>
-				<Link href="/entreprises" className="hover:text-white transition-colors">
-				Entreprises
-				</Link>
-			</li>
-			<li>
-				<Link
-				href="/entreprises/politique-rse"
-				className="hover:text-white transition-colors"
-				>
-				Politique R.S.E.
-				</Link>
-			</li>
-			<li>
-				<Link href="/contact" className="hover:text-white transition-colors">
-				Contact
-				</Link>
-			</li>
-			</ul>
+            <ul className="space-y-2 text-sm text-white/70">
+              <li>
+                <Link href="/association" className="hover:text-white transition-colors">
+                  L&apos;Association
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/association/soutenez-nous"
+                  className="hover:text-white transition-colors"
+                >
+                  Soutenez-nous
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/association/nos-ateliers-numeriques"
+                  className="hover:text-white transition-colors"
+                >
+                  Nos Ateliers Numériques
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/association/projets-internationaux"
+                  className="hover:text-white transition-colors"
+                >
+                  Projets Internationaux
+                </Link>
+              </li>
+              <li>
+                <Link href="/faire-un-don" className="hover:text-white transition-colors">
+                  Faire un don
+                </Link>
+              </li>
+              <li>
+                <Link href="/boutique" className="hover:text-white transition-colors">
+                  Boutique Solidaire
+                </Link>
+              </li>
+              <li>
+                <Link href="/entreprises" className="hover:text-white transition-colors">
+                  Entreprises
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/entreprises/politique-rse"
+                  className="hover:text-white transition-colors"
+                >
+                  Politique R.S.E.
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Col 3 */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
@@ -70,16 +70,20 @@ const socials = [
   },
 ];
 
-function NewsletterAlert() {
+function NewsletterToast({
+  footerRef,
+}: {
+  footerRef: React.RefObject<HTMLElement | null>;
+}) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const shownRef = useRef(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (searchParams.get("newsletter") === "ok" && !shownRef.current) {
-      shownRef.current = true;
-      window.alert("Merci ! Votre inscription à notre newsletter est confirmée.");
+    if (searchParams.get("newsletter") === "ok") {
+      setVisible(true);
+      footerRef.current?.scrollIntoView({ behavior: "smooth" });
 
       const params = new URLSearchParams(searchParams.toString());
       params.delete("newsletter");
@@ -88,16 +92,50 @@ function NewsletterAlert() {
         : pathname;
       router.replace(cleanUrl, { scroll: false });
     }
-  }, [searchParams, pathname, router]);
+  }, [searchParams, pathname, router, footerRef]);
 
-  return null;
+  useEffect(() => {
+    if (!visible) return;
+    const timer = setTimeout(() => setVisible(false), 6000);
+    return () => clearTimeout(timer);
+  }, [visible]);
+
+  if (!visible) return null;
+
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className="fixed bottom-5 right-5 z-50 flex max-w-md items-start gap-3 rounded-xl border border-green/40 bg-navy px-5 py-4 text-white shadow-2xl"
+    >
+      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green text-sm font-bold text-white">
+        ✓
+      </span>
+      <div className="text-sm leading-relaxed">
+        <p className="font-semibold">Inscription confirmée</p>
+        <p className="text-white/80">
+          Merci ! Vous êtes bien inscrit(e) à la newsletter de Web Solidarité.
+        </p>
+      </div>
+      <button
+        type="button"
+        onClick={() => setVisible(false)}
+        aria-label="Fermer la notification"
+        className="ml-2 text-white/60 transition-colors hover:text-white"
+      >
+        ✕
+      </button>
+    </div>
+  );
 }
 
 export function Footer() {
+  const footerRef = useRef<HTMLElement | null>(null);
+
   return (
-    <footer className="bg-navy text-white mt-auto">
+    <footer ref={footerRef} className="bg-navy text-white mt-auto">
       <Suspense fallback={null}>
-        <NewsletterAlert />
+        <NewsletterToast footerRef={footerRef} />
       </Suspense>
 
       {/* Newsletter — Brevo */}
